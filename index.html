@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VITRE STORE | Future Streetwear</title>
+
+  <!-- Ligação ao CSS principal -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Overlay para fundo escuro nos menus -->
+  <div id="overlay" class="overlay" onclick="closeAllDrawers()"></div>
+
+  <!-- Cabecalho / Navbar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <div class="logo">
+      <a href="#">VITRE — STORE</a>
+    </div>
+
+    <div class="nav-right">
+      <button class="cart-btn" onclick="toggleCart()" aria-label="Ver Carrinho">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menu Drawer Lateral Left -->
+  <nav id="menu-drawer" class="drawer drawer-left">
+    <button class="close-btn" onclick="toggleMenu()">&times;</button>
+    <ul class="catalog-nav">
+      <li><a href="#" class="active" onclick="selectCategory('todos', this)">TODOS OS PRODUTOS</a></li>
+      <li><a href="#" onclick="selectCategory('adidas', this)">ADIDAS</a></li>
+      <li><a href="#" onclick="selectCategory('nike', this)">NIKE</a></li>
+      <li><a href="#" onclick="selectCategory('newbalance', this)">NEW BALANCE</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <span>DROP 01 // 2026</span>
+    </div>
+  </nav>
+
+  <!-- Banner Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>FUTURE STREETWEAR</h1>
+      <p>Estética urbana, cortes arrojados e tecidos de alta durabilidade.</p>
+      <a href="#vitrine" class="btn-primary" onclick="scrollToVitrine(event)">VER CATÁLOGO</a>
+    </div>
+  </section>
+
+  <!-- Catálogo de Produtos -->
+  <main id="vitrine" class="catalog-container">
+    <h2 id="category-title" class="section-title">CATÁLOGO COMPLETO</h2>
+    <div id="products-grid" class="products-grid"></div>
+  </main>
+
+  <!-- Modal do Produto -->
+  <div id="product-modal" class="modal">
+    <button class="close-btn" onclick="closeProductModal()">&times;</button>
+
+    <div class="modal-content">
+      <div id="modal-media-container" class="modal-media"></div>
+
+      <div class="modal-details">
+        <span id="modal-product-brand" class="product-category">MARCA</span>
+        <h2 id="modal-product-title">NOME DO PRODUTO</h2>
+        <div id="modal-product-price" class="product-price">R$ 0,00</div>
+
+        <div class="size-selection">
+          <label>Selecione o Tamanho:</label>
+          <div id="sizes-grid" class="sizes-grid"></div>
+        </div>
+
+        <div class="shipping-calculator">
+          <label for="cep-input"><i class="fa-solid fa-truck"></i> Calcular Frete:</label>
+          <div class="cep-box">
+            <input type="text" id="cep-input" placeholder="00000-000" maxlength="9">
+            <button onclick="calculateFreight()">CALCULAR</button>
+          </div>
+          <div id="freight-result" class="freight-result"></div>
+        </div>
+
+        <button class="btn-primary buy-btn" onclick="addModalProductToCart()">ADICIONAR AO CARRINHO</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carrinho Lateral -->
+  <aside id="cart-drawer" class="drawer drawer-right">
+    <button class="close-btn" onclick="toggleCart()">&times;</button>
+    <h3>SEU CARRINHO (<span id="cart-total-count">0</span>)</h3>
+
+    <div id="cart-items" class="cart-items">
+      <p style="color: #888; text-align: center;">Seu carrinho está vazio.</p>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>TOTAL:</span>
+        <strong id="cart-total-price">R$ 0,00</strong>
+      </div>
+      <button class="btn-primary checkout-btn" onclick="checkout()">FINALIZAR ENCOMENDA</button>
+    </div>
+  </aside>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>&copy; 2026 VITRE STORE. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
